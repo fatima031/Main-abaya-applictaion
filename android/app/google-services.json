@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "906368259064",
+    "project_id": "fir-database-b1eb7",
+    "storage_bucket": "fir-database-b1eb7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:906368259064:android:8c6e1486df79b402c23c0d",
+        "android_client_info": {
+          "package_name": "com.example.tqabayaapplication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAVC_7668inTetfZgozeiPmZgv_SwG6JQU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
