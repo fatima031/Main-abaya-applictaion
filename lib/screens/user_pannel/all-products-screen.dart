@@ -125,6 +125,7 @@ import 'package:get/get.dart';
 import 'package:image_card/image_card.dart';
 import 'package:tqabayaapplication/models/productModels.dart';
 import '../../utils/app_constant.dart';
+import 'product-details-screen.dart';
 
 class All_Products_Screen extends StatelessWidget {
   const All_Products_Screen({super.key});
@@ -159,8 +160,10 @@ class All_Products_Screen extends StatelessWidget {
             }
             if (snapshot.connectionState == ConnectionState.waiting) {
               return Container(
-                height: Get.height / 5,
-                child: const Center(child: CupertinoActivityIndicator()),
+                height:   
+                Get.height / 5,
+                child:
+                 const Center(child: CupertinoActivityIndicator()),
               );
             }
             if (snapshot.data!.docs.isEmpty) {
@@ -170,15 +173,16 @@ class All_Products_Screen extends StatelessWidget {
             }
             if (snapshot.data != null) {
               return  GridView.builder(
-                  itemCount: 10,//snapshot.data!.docs.length,
+                  itemCount: snapshot.data!.docs.length,
                   shrinkWrap: true,
                   // ignore: prefer_const_constructors
                   physics: BouncingScrollPhysics(),
-                  gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
+                  gridDelegate:   SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     mainAxisSpacing: 3,
                     crossAxisSpacing: 3,
-                    childAspectRatio: _height * 0.00088,
+                    childAspectRatio: 
+                     _height * 0.00088,
                   ),
                   itemBuilder: (context, index) {
                     final productData = snapshot.data!.docs[index];
@@ -196,14 +200,13 @@ class All_Products_Screen extends StatelessWidget {
                         createdAt: productData['createdAt'],
                         updatedAt: productData['updatedAt']);
                     return GestureDetector(
-                      onTap: () {
-                        // Get.to(() => AllSingleCategoryProductScreen(
-                        //     categoryId: categoriesModel.categoryId));
-                      },
+                      // onTap: () {
+                      //   Get.to(()=> ProductDetailsScreen(productModel: productModel));    
+                      // },
                       child: Container(
                         margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 0),
                         alignment: Alignment.center,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           // border: Border.all()
                         ),
                         child: FillImageCard(
@@ -221,9 +224,9 @@ class All_Products_Screen extends StatelessWidget {
                               child: Text(
                                 "PKR: " + productModel.fullPrice,
                                 overflow: TextOverflow.ellipsis,
-                                style: TextStyle(fontSize: 12.0),
+                                style: const TextStyle(fontSize: 12.0),
                               )),
-                          footer: Text(productModel.fullPrice, overflow: TextOverflow.ellipsis,),
+                          // footer: Text(productModel.fullPrice, overflow: TextOverflow.ellipsis,),
 
                         ),
 

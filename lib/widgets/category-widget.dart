@@ -61,13 +61,15 @@ class CategoryWidget extends StatelessWidget {
                               child: Container(
                                 child: FillImageCard(
                                   borderRadius: 20.0,
-                                  width: Get.width / 4,
+                                  width: Get.width / 3,
                                   heightImage: Get.height / 12,
                                   imageProvider: CachedNetworkImageProvider(
                                       categoriesModel.categoryImg),
                                   title: Center(
                                       child: Text(
                                     categoriesModel.categoryName,
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLines: 2,
                                     style: TextStyle(fontSize: 12.0),
                                   )),
                                   // footer: Text(''),

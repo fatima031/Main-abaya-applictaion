@@ -57,7 +57,10 @@ class _AllSingleCategoryProductScreenState
               );
             }
             if (snapshot.data != null) {
-              return GridView.builder(
+
+
+              return 
+              GridView.builder(
                   itemCount: snapshot.data!.docs.length,
                   shrinkWrap: true,
                   // ignore: prefer_const_constructors
@@ -66,7 +69,8 @@ class _AllSingleCategoryProductScreenState
                       crossAxisCount: 2,
                       mainAxisSpacing: 3,
                       crossAxisSpacing: 3,
-                      childAspectRatio: 0.75),
+                      childAspectRatio: 0.75
+                      ),
                   itemBuilder: (context, index) {
                     final productData = snapshot.data!.docs[index];
                     ProductModel productModel = ProductModel(
@@ -82,40 +86,31 @@ class _AllSingleCategoryProductScreenState
                         productDescription: productData['productDescription'],
                         createdAt: productData['createdAt'],
                         updatedAt: productData['updatedAt']);
-                    // CategoriesModel categoriesModel = CategoriesModel(
-                    //     categoryId: snapshot.data!.docs[index]['categoryId'],
-                    //     categoryImg: snapshot.data!.docs[index]['categoryImg'],
-                    //     categoryName: snapshot.data!.docs[index]
-                    //         ['categoryName'],
-                    //     createdOn: snapshot.data!.docs[index]['createdOn'],
-                    //     updatedOn: snapshot.data!.docs[index]['updatedOn']);
-                    return Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Container(
-                            child: FillImageCard(
-                              borderRadius: 20.0,
-                              // width: Get.width / 2.3,
-                              // heightImage: Get.height / 11,
-                              width: 130,
-                              heightImage: 170,
-                              imageProvider: CachedNetworkImageProvider(
-                                  productModel.productImage[0]),
-                              title: Center(
-                                  child: Text(
-                                productModel.productName,
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: 10,
-                                style: const TextStyle(fontSize: 12.0),
-                              )),
-                              // footer: Text(''),
-                            ),
-                          ),
-                        )
-                      ],
+                    
+                    return Container(
+                      margin: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(),
+                      child: FillImageCard(
+                        borderRadius: 20.0,
+                        // width: Get.width / 2.3,
+                        // heightImage: Get.height / 11,
+                        width: 130,
+                        heightImage: 170,
+                        imageProvider: CachedNetworkImageProvider(
+                            productModel.productImage[0]),
+                        title: Center(
+                            child: Text(
+                          productModel.productName,
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 2,
+                          style: const TextStyle(fontSize: 12.0),
+                        )),
+                        // footer: Text(''),
+                      ),
                     );
-                  });
+                  }
+                  );
             }
             return Container();
           }),

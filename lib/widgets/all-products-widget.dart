@@ -8,6 +8,8 @@ import 'package:image_card/image_card.dart';
 import 'package:tqabayaapplication/models/productModels.dart';
 import 'package:tqabayaapplication/utils/app_constant.dart';
 
+import '../screens/user_pannel/product-details-screen.dart';
+
 
 
 class All_Product_widget extends StatelessWidget {
@@ -74,10 +76,9 @@ class All_Product_widget extends StatelessWidget {
                     return Row(
                       children: [
                         GestureDetector(
-                          // onTap: () {
-                          //   Get.to(() => AllSingleCategoryProductScreen(
-                          //       categoryId: categoriesModel.categoryId));
-                          // },
+                           onTap: () {
+                        Get.to(()=> ProductDetailsScreen(productModel: productModel));    
+                      },
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Container(
