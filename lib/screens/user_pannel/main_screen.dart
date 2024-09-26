@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tqabayaapplication/screens/user_pannel/all-products-screen.dart';
+import 'package:tqabayaapplication/screens/user_pannel/cart-screen.dart';
 import '../../utils/app_constant.dart';
 import '../../widgets/all-products-widget.dart';
 import '../../widgets/category-widget.dart';
@@ -24,6 +25,13 @@ class Main_screen extends StatelessWidget {
           AppConstant.appMainName,
           style: const TextStyle(color: AppConstant.apptextColor),
         ),
+        actions: [
+          GestureDetector(
+              onTap: () {
+                Get.to(() => const Cart_Screen());
+              },
+              child: const Icon(Icons.shopping_cart_checkout))
+        ],
         centerTitle: true,
         elevation: 0,
       ),

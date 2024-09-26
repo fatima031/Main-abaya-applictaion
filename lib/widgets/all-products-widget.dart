@@ -2,15 +2,11 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_card/image_card.dart';
 import 'package:tqabayaapplication/models/productModels.dart';
-import 'package:tqabayaapplication/utils/app_constant.dart';
 
 import '../screens/user_pannel/product-details-screen.dart';
-
-
 
 class All_Product_widget extends StatelessWidget {
   const All_Product_widget({super.key});
@@ -41,68 +37,64 @@ class All_Product_widget extends StatelessWidget {
           }
           if (snapshot.data != null) {
             return GridView.builder(
-                  itemCount: snapshot.data!.docs.length,
-                  shrinkWrap: true,
-                  // ignore: prefer_const_constructors
-                  physics: BouncingScrollPhysics(),
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      mainAxisSpacing: 5,
-                      crossAxisSpacing: 5,
-                      childAspectRatio: 0.80),
-                  itemBuilder: (context, index) {
-                    final productData = snapshot.data!.docs[index];
-                    ProductModel productModel = ProductModel(
-                        productId: productData['productId'],
-                        categoryId: productData['categoryId'],
-                        productName: productData['categoryId'],
-                        categoryName: productData['categoryName'],
-                        salePrice: productData['salePrice'],
-                        fullPrice: productData['fullPrice'],
-                        productImage: productData['productImage'],
-                        deliveryTime: productData['deliveryTime'],
-                        isSale: productData['isSale'],
-                        productDescription: productData['productDescription'],
-                        createdAt: productData['createdAt'],
-                        updatedAt: productData['updatedAt']);
+                itemCount: snapshot.data!.docs.length,
+                shrinkWrap: true,
+                // ignore: prefer_const_constructors
+                physics: BouncingScrollPhysics(),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 5,
+                    crossAxisSpacing: 5,
+                    childAspectRatio: 0.80),
+                itemBuilder: (context, index) {
+                  final productData = snapshot.data!.docs[index];
+                  ProductModel productModel = ProductModel(
+                      productId: productData['productId'],
+                      categoryId: productData['categoryId'],
+                      productName: productData['categoryId'],
+                      categoryName: productData['categoryName'],
+                      salePrice: productData['salePrice'],
+                      fullPrice: productData['fullPrice'],
+                      productImages: productData['productImages'],
+                      deliveryTime: productData['deliveryTime'],
+                      isSale: productData['isSale'],
+                      productDescription: productData['productDescription'],
+                      createdAt: productData['createdAt'],
+                      updatedAt: productData['updatedAt']);
 
-                    // CategoriesModel categoriesModel = CategoriesModel(
-                    //     categoryId: snapshot.data!.docs[index]['categoryId'],
-                    //     categoryImg: snapshot.data!.docs[index]['categoryImg'],
-                    //     categoryName: snapshot.data!.docs[index]
-                    //         ['categoryName'],
-                    //     createdOn: snapshot.data!.docs[index]['createdOn'],
-                    //     updatedOn: snapshot.data!.docs[index]['updatedOn']);
-                    return Row(
-                      children: [
-                        GestureDetector(
-                           onTap: () {
-                        Get.to(()=> ProductDetailsScreen(productModel: productModel));    
-                      },
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              child: FillImageCard(
-                                borderRadius: 20.0,
-                                width: 130,
-                                heightImage: Get.height /6,
-                                imageProvider: CachedNetworkImageProvider(
-                                    productModel.productImage[0]),
-                                title: Center(
-                                    child: Text(
-                                  productModel.productName,
-                                  overflow: TextOverflow.ellipsis,
-                                  maxLines: 1,
-                                  style: const TextStyle(fontSize: 12.0),
-                                )),
-                                footer: Center(child: Text("PKR: " + productModel.fullPrice)),
-                              ),
+                  return Row(
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          Get.to(() =>
+                              ProductDetailsScreen(productModel: productModel));
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            child: FillImageCard(
+                              borderRadius: 20.0,
+                              width: 130,
+                              heightImage: Get.height / 6,
+                              imageProvider: CachedNetworkImageProvider(
+                                  productModel.productImages[0]),
+                              title: Center(
+                                  child: Text(
+                                productModel.productName,
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 1,
+                                style: const TextStyle(fontSize: 12.0),
+                              )),
+                              footer: Center(
+                                  child:
+                                      Text("PKR: " + productModel.fullPrice)),
                             ),
                           ),
-                        )
-                      ],
-                    );
-                  });
+                        ),
+                      )
+                    ],
+                  );
+                });
           }
           return Container();
         });

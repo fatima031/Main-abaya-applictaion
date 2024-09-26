@@ -1,4 +1,6 @@
-class ProductModel {
+// ignore_for_file: file_names
+
+class CartModel {
   final String productId;
   final String categoryId;
   final String productName;
@@ -11,8 +13,10 @@ class ProductModel {
   final String productDescription;
   final dynamic createdAt;
   final dynamic updatedAt;
+  final int productQuantity;
+  final double productTotalPrice;
 
-  ProductModel({
+  CartModel({
     required this.productId,
     required this.categoryId,
     required this.productName,
@@ -25,6 +29,8 @@ class ProductModel {
     required this.productDescription,
     required this.createdAt,
     required this.updatedAt,
+    required this.productQuantity,
+    required this.productTotalPrice,
   });
 
   Map<String, dynamic> toMap() {
@@ -41,11 +47,13 @@ class ProductModel {
       'productDescription': productDescription,
       'createdAt': createdAt,
       'updatedAt': updatedAt,
+      'productQuantity': productQuantity,
+      'productTotalPrice': productTotalPrice,
     };
   }
 
-  factory ProductModel.fromMap(Map<String, dynamic> json) {
-    return ProductModel(
+  factory CartModel.fromMap(Map<String, dynamic> json) {
+    return CartModel(
       productId: json['productId'],
       categoryId: json['categoryId'],
       productName: json['productName'],
@@ -58,6 +66,8 @@ class ProductModel {
       productDescription: json['productDescription'],
       createdAt: json['createdAt'],
       updatedAt: json['updatedAt'],
+      productQuantity: json['productQuantity'],
+      productTotalPrice: json['productTotalPrice'],
     );
   }
 }

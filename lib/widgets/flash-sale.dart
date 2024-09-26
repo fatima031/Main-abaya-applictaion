@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_card/image_card.dart';
 import 'package:tqabayaapplication/models/productModels.dart';
+import 'package:tqabayaapplication/screens/user_pannel/product-details-screen.dart';
 import 'package:tqabayaapplication/utils/app_constant.dart';
 
 
@@ -53,53 +54,51 @@ class Flash_sale_widget extends StatelessWidget {
                           categoryName: productData['categoryName'],
                           salePrice: productData['salePrice'],
                           fullPrice: productData['fullPrice'],
-                          productImage: productData['productImage'],
+                          productImages: productData['productImages'],
                           deliveryTime: productData['deliveryTime'],
                           isSale: productData['isSale'],
                           productDescription: productData['productDescription'],
                           createdAt: productData['createdAt'],
                           updatedAt: productData['updatedAt']);
-                      // CategoriesModel categoriesModel = CategoriesModel(
-                      //     categoryId: snapshot.data!.docs[index]['categoryId'],
-                      //     categoryImg: snapshot.data!.docs[index]
-                      //         ['categoryImg'],
-                      //     categoryName: snapshot.data!.docs[index]
-                      //         ['categoryName'],
-                      //     createdOn: snapshot.data!.docs[index]['createdOn'],
-                      //     updatedOn: snapshot.data!.docs[index]['updatedOn']);
+                      
                       return Row(
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.all(5.0),
-                            child: Container(
-                              child: FillImageCard(
-                                borderRadius: 20.0,
-                                width: Get.width / 3.5,
-                                heightImage: Get.height / 12,
-                                imageProvider: CachedNetworkImageProvider(
-                                    productModel.productImage[0]),
-                                title: Center(
-                                    child: Text(
-                                  productModel.productName,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(fontSize: 10.0),
-                                )),
-                                footer: Row(
-                                  children: [
-                                    Text('Rs ${productModel.salePrice}',
-                                        style: TextStyle(fontSize: 10.0)),
-                                    SizedBox(
-                                      width: 2,
-                                    ),
-                                    Text(
-                                      '${productModel.fullPrice}',
-                                      style: const TextStyle(
-                                          fontSize: 10.0,
-                                          decoration:
-                                              TextDecoration.lineThrough,
-                                          color: AppConstant.appSeconderyColor),
-                                    )
-                                  ],
+                          GestureDetector(
+                            onTap: (){
+                              Get.to(()=> ProductDetailsScreen(productModel: productModel));
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.all(5.0),
+                              child: Container(
+                                child: FillImageCard(
+                                  borderRadius: 20.0,
+                                  width: Get.width / 3.5,
+                                  heightImage: Get.height / 12,
+                                  imageProvider: CachedNetworkImageProvider(
+                                      productModel.productImages[0]),
+                                  title: Center(
+                                      child: Text(
+                                    productModel.productName,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: TextStyle(fontSize: 10.0),
+                                  )),
+                                  footer: Row(
+                                    children: [
+                                      Text('Rs ${productModel.salePrice}',
+                                          style: TextStyle(fontSize: 10.0)),
+                                      SizedBox(
+                                        width: 2,
+                                      ),
+                                      Text(
+                                        '${productModel.fullPrice}',
+                                        style: const TextStyle(
+                                            fontSize: 10.0,
+                                            decoration:
+                                                TextDecoration.lineThrough,
+                                            color: AppConstant.appSeconderyColor),
+                                      )
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),

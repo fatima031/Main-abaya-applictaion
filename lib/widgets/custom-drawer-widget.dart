@@ -4,9 +4,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:tqabayaapplication/utils/app_constant.dart';
+import 'package:tqabayaapplication/screens/user_pannel/main_screen.dart';
 
 import '../screens/auth_UI/welcomeScreen.dart';
+import '../screens/user_pannel/all-order-screen.dart';
+import '../utils/app_constant.dart';
 
 class CustomDrawer extends StatefulWidget {
   const CustomDrawer({super.key});
@@ -51,24 +53,27 @@ class _CustomDrawerState extends State<CustomDrawer> {
               color: Colors.grey,
               thickness: 1.5,
             ),
-            const Padding(
-              padding: EdgeInsets.symmetric(
+            Padding(
+              padding: const EdgeInsets.symmetric(
                 horizontal: 20,
               ),
               child: ListTile(
+                onTap: () {
+                  Get.to(() => Main_screen());
+                },
                 titleAlignment: ListTileTitleAlignment.center,
-                title: Text(
+                title: const Text(
                   "Home",
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 16,
                       color: AppConstant.apptextColor),
                 ),
-                leading: Icon(
+                leading: const Icon(
                   Icons.home,
                   color: AppConstant.apptextColor,
                 ),
-                trailing: Icon(
+                trailing: const Icon(
                   Icons.keyboard_arrow_right_rounded,
                   color: AppConstant.apptextColor,
                 ),
@@ -97,24 +102,28 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 ),
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.symmetric(
+            Padding(
+              padding: const EdgeInsets.symmetric(
                 horizontal: 20,
               ),
               child: ListTile(
+                onTap: () {
+                  Get.back();
+                  Get.to(() => const AllOrderScreen());
+                },
                 titleAlignment: ListTileTitleAlignment.center,
-                title: Text(
+                title: const Text(
                   "Orders",
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 16,
                       color: AppConstant.apptextColor),
                 ),
-                leading: Icon(
+                leading: const Icon(
                   Icons.shopping_bag,
                   color: AppConstant.apptextColor,
                 ),
-                trailing: Icon(
+                trailing: const Icon(
                   Icons.keyboard_arrow_right_rounded,
                   color: AppConstant.apptextColor,
                 ),
@@ -167,7 +176,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                   Icons.logout,
                   color: AppConstant.apptextColor,
                 ),
-                trailing: Icon(
+                trailing: const Icon(
                   Icons.keyboard_arrow_right_rounded,
                   color: AppConstant.apptextColor,
                 ),

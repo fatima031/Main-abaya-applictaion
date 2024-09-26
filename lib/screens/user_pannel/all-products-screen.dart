@@ -193,16 +193,16 @@ class All_Products_Screen extends StatelessWidget {
                         categoryName: productData['categoryName'],
                         salePrice: productData['salePrice'],
                         fullPrice: productData['fullPrice'],
-                        productImage: productData['productImage'],
+                        productImages: productData['productImages'],
                         deliveryTime: productData['deliveryTime'],
                         isSale: productData['isSale'],
                         productDescription: productData['productDescription'],
                         createdAt: productData['createdAt'],
                         updatedAt: productData['updatedAt']);
                     return GestureDetector(
-                      // onTap: () {
-                      //   Get.to(()=> ProductDetailsScreen(productModel: productModel));    
-                      // },
+                      onTap: () {
+                        Get.to(()=> ProductDetailsScreen(productModel: productModel));    
+                      },
                       child: Container(
                         margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 0),
                         alignment: Alignment.center,
@@ -217,7 +217,7 @@ class All_Products_Screen extends StatelessWidget {
                           width: MediaQuery.of(context).size.width,
                           heightImage: 180,
                           imageProvider: CachedNetworkImageProvider(
-                              productModel.productImage[0],
+                              productModel.productImages[0],
                             //   categoriesModel.categoryImg
                           ),
                           title:  Center(

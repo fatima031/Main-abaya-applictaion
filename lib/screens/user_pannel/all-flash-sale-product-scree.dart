@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:image_card/image_card.dart';
 import '../../models/productModels.dart';
 import '../../utils/app_constant.dart';
+import 'product-details-screen.dart';
 
 class AllFlashSaleProductScreen extends StatefulWidget {
   const AllFlashSaleProductScreen({super.key});
@@ -74,7 +75,7 @@ class _AllFlashSaleProductScreenState extends State<AllFlashSaleProductScreen> {
                         categoryName: productData['categoryName'],
                         salePrice: productData['salePrice'],
                         fullPrice: productData['fullPrice'],
-                        productImage: productData['productImage'],
+                        productImages: productData['productImages'],
                         deliveryTime: productData['deliveryTime'],
                         isSale: productData['isSale'],
                         productDescription: productData['productDescription'],
@@ -91,10 +92,9 @@ class _AllFlashSaleProductScreenState extends State<AllFlashSaleProductScreen> {
                     return Row(
                       children: [
                         GestureDetector(
-                          // onTap: () {
-                          //   Get.to(() => AllSingleCategoryProductScreen(
-                          //       categoryId: categoriesModel.categoryId));
-                          // },
+                          onTap: (){
+                              Get.to(()=> ProductDetailsScreen(productModel: productModel));
+                            },
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Container(
@@ -103,7 +103,7 @@ class _AllFlashSaleProductScreenState extends State<AllFlashSaleProductScreen> {
                                 width: 130,
                                 heightImage: 140,
                                 imageProvider: CachedNetworkImageProvider(
-                                    productModel.productImage[0]),
+                                    productModel.productImages[0]),
                                 title: Center(
                                     child: Text(
                                   productModel.productName,
